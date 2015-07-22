@@ -1,0 +1,4 @@
+<table>
+<tr><td width="100" align="right">Dear</td><td>#NAME#,</td></tr>
+</table>
+<h4>You've been invited to party with me!  We need you to use this email to confirm the invitation in case an imposter shows up.</h4>
