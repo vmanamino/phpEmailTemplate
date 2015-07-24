@@ -34,8 +34,17 @@ for ($i = 1; $i < 11; $i++) {
 	$email = "email".$i;
 	## if not empty then send to email factory
 	if ($$name && $$email) {
-		$confirmation = mail_factory($$name, $$email, $_SERVER['DOCUMENT_ROOT']."/emailInvite.txt");
-		echo $confirmation."<br/><br/>";
+		if (!filter_var($$email, FILTER_VALIDATE_EMAIL) === false) { ## check for valid email
+			$confirmation = mail_factory($$name, $$email, $_SERVER['DOCUMENT_ROOT']."/php1_hmwk/lesson12/emailInvite.txt");
+			echo $confirmation."<br/><br/>";
+		} else { ## invalid email message
+			echo $$email." is not valid.  Please enter the correct email for .".$$name.".<br/><br/>";
+		}
+		
+	} else if (!($$name) && $$email) { ## empty name with entered email
+		echo "You didn't enter a name for ".$$email."<br/><br/>";
+	} else if ($$name && !($$email)) { ## empty email entered with name
+		echo "You didn't enter an email for ".$$name."<br/><br/>";
 	}
 	
 	
